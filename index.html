@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drop Block Puzzle - 落ち物パズルゲーム</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Drop Block Puzzle</h1>
+            <div class="game-info">
+                <div class="score-display">
+                    <span class="label">スコア:</span>
+                    <span id="score">0</span>
+                </div>
+                <div class="level-display">
+                    <span class="label">レベル:</span>
+                    <span id="level">1</span>
+                </div>
+                <div class="lines-display">
+                    <span class="label">削除した行:</span>
+                    <span id="lines">0</span>
+                </div>
+            </div>
+        </header>
+
+        <main class="game-area">
+            <div class="game-board-container">
+                <canvas id="gameCanvas" width="350" height="700"></canvas>
+                <div id="gameOverScreen" class="game-over-screen hidden">
+                    <div class="game-over-content">
+                        <h2>ゲームオーバー</h2>
+                        <p>最終スコア: <span id="finalScore">0</span></p>
+                        <button id="restartBtn" class="restart-btn">もう一度プレイ</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="game-controls">
+                <div class="next-piece-container">
+                    <h3>次のブロック</h3>
+                    <canvas id="nextPieceCanvas" width="100" height="100"></canvas>
+                </div>
+
+                <div class="control-buttons">
+                    <button id="startBtn" class="control-btn primary">スタート</button>
+                    <button id="pauseBtn" class="control-btn secondary">一時停止</button>
+                    <button id="resetBtn" class="control-btn danger">リセット</button>
+                </div>
+
+                <div class="instructions">
+                    <h3>操作方法</h3>
+                    <ul>
+                        <li><strong>←→:</strong> ブロック移動</li>
+                        <li><strong>↓:</strong> 落下速度アップ</li>
+                        <li><strong>スペース:</strong> 一番下まで落とす</li>
+                        <li><strong>↑:</strong> ブロック回転</li>
+                    </ul>
+                </div>
+
+                <div class="touch-controls">
+                    <h3>タッチ操作</h3>
+                    <div class="touch-buttons">
+                        <button class="touch-btn" id="leftBtn">←</button>
+                        <button class="touch-btn" id="rightBtn">→</button>
+                        <button class="touch-btn" id="downBtn">↓</button>
+                        <button class="touch-btn" id="rotateBtn">↻</button>
+                        <button class="touch-btn" id="dropBtn">Drop</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2024 <a href="https://github.com/seiichinamba" target="_blank">seiichinamba</a> - Drop Block Puzzle Game</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
