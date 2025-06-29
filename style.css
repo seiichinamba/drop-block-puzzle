@@ -10,6 +10,13 @@ body {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     min-height: 100vh;
     color: #333;
+    touch-action: manipulation;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .container {
@@ -116,6 +123,13 @@ header h1 {
     text-align: center;
 }
 
+.touch-buttons {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    margin-top: 15px;
+}
+
 #nextPieceCanvas {
     border: 2px solid rgba(255, 255, 255, 0.3);
     border-radius: 8px;
@@ -217,6 +231,8 @@ header h1 {
     cursor: pointer;
     transition: all 0.2s ease;
     border: 1px solid rgba(255, 255, 255, 0.3);
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .touch-btn:hover {
@@ -313,11 +329,17 @@ footer a:hover {
 /* Responsive design */
 @media (max-width: 768px) {
     .container {
+        padding: 10px;
+    }
+    
+    header {
+        margin-bottom: 20px;
         padding: 15px;
     }
     
     header h1 {
         font-size: 2rem;
+        margin-bottom: 10px;
     }
     
     .game-info {
@@ -331,22 +353,37 @@ footer a:hover {
     .game-area {
         flex-direction: column;
         align-items: center;
+        gap: 20px;
+    }
+    
+    .game-board-container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 15px;
     }
     
     .game-controls {
         min-width: auto;
         width: 100%;
         max-width: 400px;
+        gap: 15px;
     }
     
     #gameCanvas {
-        width: 100%;
-        max-width: 350px;
-        height: auto;
+        width: 300px;
+        height: 600px;
+        max-width: calc(100vw - 60px);
     }
     
     .touch-controls {
         order: -1;
+        padding: 15px;
+    }
+    
+    .next-piece-container {
+        padding: 15px;
     }
     
     .instructions {
@@ -355,22 +392,64 @@ footer a:hover {
 }
 
 @media (max-width: 480px) {
+    .container {
+        padding: 5px;
+    }
+    
+    header {
+        padding: 10px;
+        margin-bottom: 15px;
+    }
+    
     header h1 {
         font-size: 1.8rem;
     }
     
     .game-info {
         flex-direction: column;
-        gap: 10px;
+        gap: 8px;
+    }
+    
+    .game-info > div {
+        padding: 6px 12px;
+        font-size: 0.9rem;
+    }
+    
+    #gameCanvas {
+        width: 280px;
+        height: 560px;
+        max-width: calc(100vw - 30px);
+    }
+    
+    .game-controls {
+        gap: 12px;
+    }
+    
+    .touch-controls {
+        padding: 12px;
     }
     
     .touch-buttons {
-        grid-template-columns: repeat(2, 1fr);
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+        margin-top: 10px;
     }
     
     .touch-btn {
-        padding: 15px;
-        font-size: 1.1rem;
+        padding: 12px 8px;
+        font-size: 1rem;
+        border-radius: 8px;
+        min-height: 50px;
+    }
+    
+    .next-piece-container {
+        padding: 12px;
+    }
+    
+    .next-piece-container h3 {
+        font-size: 1rem;
+        margin-bottom: 10px;
     }
 }
 

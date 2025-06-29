@@ -97,11 +97,33 @@ class DropBlockPuzzle {
         this.rotateBtn.addEventListener('click', () => this.rotatePiece());
         this.dropBtn.addEventListener('click', () => this.dropPiece());
         
-        // Prevent double-tap zoom on mobile
+        // Prevent double-tap zoom and other touch gestures on mobile
+        let lastTouchEnd = 0;
         document.addEventListener('touchstart', (e) => {
             if (e.touches.length > 1) {
                 e.preventDefault();
             }
+        }, { passive: false });
+        
+        document.addEventListener('touchend', (e) => {
+            const now = Date.now();
+            if (now - lastTouchEnd <= 300) {
+                e.preventDefault();
+            }
+            lastTouchEnd = now;
+        }, { passive: false });
+        
+        // Prevent pinch zoom
+        document.addEventListener('gesturestart', (e) => {
+            e.preventDefault();
+        });
+        
+        document.addEventListener('gesturechange', (e) => {
+            e.preventDefault();
+        });
+        
+        document.addEventListener('gestureend', (e) => {
+            e.preventDefault();
         });
         
         // Handle visibility change for performance
